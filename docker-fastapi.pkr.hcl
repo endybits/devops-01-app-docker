@@ -10,11 +10,18 @@ packer {
 source "docker" "fastapi" {
   image  = "python:3.9"
   commit = true
+  changes = [
+    "WORKDIR /app",
+    "EXPOSE 8000",
+    // "CMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"80\" ]",
+    "CMD [\"./app/main.py\"]",
+    "ENTRYPOINT [\"python\"]",
+  ]
 
 }
 
 build {
-  name = "devops-project-01"
+  name = "fastapi-image"
   sources = [
     "source.docker.fastapi"
   ]
@@ -38,15 +45,24 @@ build {
   provisioner "shell" {
     inline = [
       "echo \"************************\"",
-      "mkdir /app",
+      "mkdir -p /app",
       "mv /tmp/requirements.txt /app/",
       "mv /tmp/makefile /app/",
       "cd /app",
       "tar -xf /tmp/app.tar.gz",
+      "pwd",
+      "ls /app",
+      "ls /app/*",
       "make install",
       "echo \"************************\"",
     ]
 
   }
+
+  post-processor "docker-tag" {
+  repository = "fastapi-image"
+  tags       = ["1.0"]
+  only       = ["docker.fastapi"]
+}
 
 }
