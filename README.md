@@ -1,6 +1,8 @@
 # DevOps 01
 ## Creating a Custom Docker Image with Packer in GitHub Actions
 
+[![Custom app Docker Image](https://github.com/endybits/devops-01-app-docker/actions/workflows/create-app-image.yml/badge.svg)](https://github.com/endybits/devops-01-app-docker/actions/workflows/create-app-image.yml)
+
 This is a great starting point. This project introduces you to Packer and Docker, and it helps you set up a basic CI/CD pipeline with GitHub Actions.
 
 Stack ~/> FastAPI | Docker | Packer | Github Actions
