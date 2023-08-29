@@ -30,3 +30,8 @@ jobs:
     - name: Run `packer validate`
       id: validate
       run: packer validate ./docker-fastapi.pkr.hcl
+    
+    - name: Run `packer build`
+      id: build
+      #run: packer build ./docker-fastapi.pkr.hcl
+      run: docker images
