@@ -1,5 +1,10 @@
 name: Custom app Docker Image
+
 on: [push]
+
+env:
+  PACKER_VERSION: "latest" # or: "1.8.6"
+
 jobs:
   hello-docker:
     runs-on: ubuntu-latest
@@ -12,3 +17,16 @@ jobs:
       run: |
         tar -czvf app.tar.gz ./app
         ls
+    
+    # Packer
+    - name: Setup `packer`
+      uses: hashicorp/setup-packer@main
+      id: setup
+      with:
+        version: ${{env.PACKER_VERSION}}
+    - name: Run `packer init`
+      id: init
+      run: packer init ./docker-fastapi.pkr.hcl
+    - name: Run `packer validate`
+      id: validate
+      run: packer validate ./docker-fastapi.pkr.hcl
