@@ -4,10 +4,11 @@ jobs:
   hello-docker:
     runs-on: ubuntu-latest
     steps:
-    - name: Hello
-      run: echo "Hello, it'll be a great project."
-    - name: Repo
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Install Dep
       run: |
         make install
+    - name: Compress App
+      run: |
+        tar -czvf app.tar.gz ./app
+        ls
