@@ -1,0 +1,8 @@
+name: Custom app Docker Image
+on: [push]
+jobs:
+  hello-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: HEllo
+      run: echo Hello, it'll be a great project.
