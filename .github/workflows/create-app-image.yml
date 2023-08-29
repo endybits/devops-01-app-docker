@@ -34,3 +34,7 @@ jobs:
     - name: Run `packer build`
       id: build
       run: packer build ./docker-fastapi.pkr.hcl
+  
+    - name: Run `packer build`
+      id: docker-images
+      run: docker images
