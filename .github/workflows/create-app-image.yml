@@ -6,3 +6,8 @@ jobs:
     steps:
     - name: Hello
       run: echo "Hello, it'll be a great project."
+    - name: Repo
+      uses: actions/checkout@v3
+    - name: Install Dep
+      run: |
+        make install
