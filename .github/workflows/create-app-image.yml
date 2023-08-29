@@ -4,5 +4,5 @@ jobs:
   hello-docker:
     runs-on: ubuntu-latest
     steps:
-    - name: HEllo
-      run: echo Hello, it'll be a great project.
+    - name: Hello
+      run: echo "Hello, it'll be a great project."
