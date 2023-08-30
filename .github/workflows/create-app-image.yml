@@ -50,4 +50,4 @@ jobs:
     
     - name: Curl container
       id: curl-container
-      run: curl https://localhost:8000
+      run: curl -L -k https://localhost:8000
