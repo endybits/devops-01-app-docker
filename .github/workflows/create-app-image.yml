@@ -16,7 +16,7 @@ jobs:
         make install
     - name: Compress App
       run: |
-        tar -czvf /tmp/app.tar.gz ./app
+        tar -czvf app.tar.gz ./app
         pwd
     - name: Copy Files
       run: |
