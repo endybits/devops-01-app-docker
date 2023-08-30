@@ -49,7 +49,7 @@ jobs:
       run: |
         export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
         echo $CONTAINER_IP
-        echo https://{{CONTAINER_IP}}
+        echo https://$CONTAINER_IP
 
     
     # - name: Curl container
