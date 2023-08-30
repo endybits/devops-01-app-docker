@@ -1,4 +1,5 @@
 name: Custom app Docker Image
+run-name: Packaging App and Building Docker Image
 
 on: [push]
 
@@ -30,11 +31,19 @@ jobs:
     - name: Run `packer validate`
       id: validate
       run: packer validate ./docker-fastapi.pkr.hcl
-    
     - name: Run `packer build`
       id: build
       run: packer build ./docker-fastapi.pkr.hcl
-  
-    - name: Run `Docker images`
+
+    # Docker Check
+    - name: Docker images
       id: docker-images
       run: docker images
+    
+    - name: Build a docker container
+      id: docker-run
+      run: docker run -d --name fastapi-app-container -p 8000:80 fastapi-image:1.0
+    
+    - name: List containers
+      id: container-list
+      run: docker container list
