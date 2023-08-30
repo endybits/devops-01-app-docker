@@ -41,7 +41,10 @@ jobs:
       run: docker images
     - name: Build a docker container
       id: docker-run
-      run: docker run -d --name fastapi-app-container -p 8000:80 fastapi-image:1.0
+      run: |
+        docker run -d --name fastapi-app-container -p 8000:80 fastapi-image:1.0
+        sleep 10
+        docker logs fastapi-app-container > container_logs.txt
     - name: List containers
       id: container-list
       run: docker container list
@@ -49,8 +52,8 @@ jobs:
     #   run: |
     #     export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
     #     echo $CONTAINER_IP
-    - name: Docker Container Logs
-      run: docker logs fastapi-app-container
+    - name: Print Logs
+      run: cat container_logs.txt
 
     - name: Health Check
       run: |
