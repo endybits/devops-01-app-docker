@@ -48,12 +48,13 @@ build {
       "mkdir -p /app",
       "mv /tmp/requirements.txt /app/",
       "mv /tmp/makefile /app/",
+      "echo \"******** cd app ********\"",
       "cd /app",
       "tar -xf /tmp/app.tar.gz",
       "ls",
-      "echo \"************************\"",
+      "echo \"******** ls app ********\"",
       "ls app",
-      "echo \"************************\"",
+      "echo \"******** Make install ********\"",
       "make install",
     ]
 
