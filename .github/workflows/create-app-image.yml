@@ -47,3 +47,7 @@ jobs:
     - name: List containers
       id: container-list
       run: docker container list
+    
+    - name: Curl container
+      id: curl-container
+      run: curl http://localhost:8000
