@@ -8,7 +8,7 @@ env:
 
 jobs:
   hello-docker:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Install Dep
@@ -18,11 +18,11 @@ jobs:
       run: |
         tar -czvf app.tar.gz ./app
         pwd
-    - name: Copy Files
-      run: |
-        cp requirements.txt /tmp/requirements.txt
-        cp makefile /tmp/makefile
-        ls /tmp
+    # - name: Copy Files
+    #   run: |
+    #     cp requirements.txt /tmp/requirements.txt
+    #     cp makefile /tmp/makefile
+    #     ls /tmp
     
     # Packer
     - name: Setup `packer`

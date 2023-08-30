@@ -50,6 +50,9 @@ build {
       "mv /tmp/makefile /app/",
       "echo \"******** cd app ********\"",
       "cd /app",
+      "echo \"******** cat requirements ********\"",
+      "cat requirements.txt",
+      
       "tar -xf /tmp/app.tar.gz",
       "ls",
       "echo \"******** ls app ********\"",
