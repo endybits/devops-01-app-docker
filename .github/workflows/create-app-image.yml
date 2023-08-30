@@ -16,9 +16,13 @@ jobs:
         make install
     - name: Compress App
       run: |
-        tar -czvf app.tar.gz ./app
-        ls
+        tar -czvf /tmp/app.tar.gz ./app
         pwd
+    - name: Copy Files
+      run: |
+        cp requirements.txt /tmp/requirements.txt
+        cp makefile /tmp/makefile
+        ls /tmp
     
     # Packer
     - name: Setup `packer`
