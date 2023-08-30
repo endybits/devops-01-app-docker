@@ -45,10 +45,10 @@ jobs:
     - name: List containers
       id: container-list
       run: docker container list
-    - name: Container Ip
-      run: |
-        export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
-        echo $CONTAINER_IP
+    # - name: Container Ip
+    #   run: |
+    #     export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
+    #     echo $CONTAINER_IP
     - name: Docker Container Logs
       run: docker logs fastapi-app-container
 

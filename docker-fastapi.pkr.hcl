@@ -50,11 +50,11 @@ build {
       "mv /tmp/makefile /app/",
       "cd /app",
       "tar -xf /tmp/app.tar.gz",
-      "pwd",
-      "ls /app",
-      "ls /app/*",
-      "make install",
+      "ls",
       "echo \"************************\"",
+      "ls app",
+      "echo \"************************\"",
+      "make install",
     ]
 
   }
