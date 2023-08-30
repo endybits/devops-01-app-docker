@@ -50,4 +50,6 @@ jobs:
     
     - name: Curl container
       id: curl-container
-      run: curl -L -k https://127.0.0.1:8000
+      uses: indiesdev/curl@v1.1
+      with:
+        url: https://127.0.0.1:8000
