@@ -52,9 +52,8 @@ jobs:
     
     - name: Health Check
       run: |
-        export HEALTH_CHECK=$(curl -s http://localhost:8000/health || exit 1)
         echo "Health check result"
-        echo $HEALTH_CHECK
+        curl -s http://localhost:8000/health || exit 1
 
     # - name: Curl container
     #   id: curl-container
