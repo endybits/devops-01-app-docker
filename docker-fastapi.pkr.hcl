@@ -52,7 +52,7 @@ build {
       "cd /app",
       "echo \"******** cat requirements ********\"",
       "cat requirements.txt",
-      
+      "pwd",
       "tar -xf /tmp/app.tar.gz",
       "ls",
       "echo \"******** ls app ********\"",
