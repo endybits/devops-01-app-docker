@@ -49,11 +49,15 @@ jobs:
       run: |
         export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
         echo $CONTAINER_IP
-        echo https://$CONTAINER_IP:8000
-
     
-    - name: Curl container
-      id: curl-container
-      uses: indiesdev/curl@v1.1
-      with:
-        url: https://$CONTAINER_IP:8000
+    - name: Health Check
+      run: |
+        HEALTH_CHECK = $(curl -s http://localhost:8000)
+        echo Health check result
+        echo $HEALTH_CHECK
+
+    # - name: Curl container
+    #   id: curl-container
+    #   uses: indiesdev/curl@v1.1
+    #   with:
+    #     url: https://$CONTAINER_IP:8000
