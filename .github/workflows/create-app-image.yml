@@ -66,10 +66,14 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     
+    - name: Tag Docker Image
+      run: |
+        docker tag fastapi-image:1.0 endybits/fastapi-image:1.0
+      
     - name: Push Docker Image
       run: |
         docker push endybits/fastapi-image:1.0
-
+      
     # - name: Health Check
     #   run: |
     #     echo "Health check result"
