@@ -5,6 +5,7 @@ on: [push]
 
 env:
   PACKER_VERSION: "latest" # or: "1.8.6"
+  DOCKER_REGISTRY_USERNAME: "endybits"
 
 jobs:
   hello-docker:
@@ -18,12 +19,7 @@ jobs:
       run: |
         tar -czvf app.tar.gz ./app
         pwd
-    # - name: Copy Files
-    #   run: |
-    #     cp requirements.txt /tmp/requirements.txt
-    #     cp makefile /tmp/makefile
-    #     ls /tmp
-    
+
     # Packer
     - name: Setup `packer`
       uses: hashicorp/setup-packer@main
@@ -40,26 +36,11 @@ jobs:
       id: build
       run: packer build ./docker-fastapi.pkr.hcl
 
-    # Docker Check
-    - name: Docker images
+    # Push to Docker Registry
+    - name: List Docker images
       id: docker-images
       run: docker images
-    - name: Build a docker container
-      id: docker-run
-      run: |
-        docker run -d --name fastapi-app-container -p 8000:80 fastapi-image:1.0
-        sleep 10
-        docker logs fastapi-app-container > container_logs.txt
-    - name: List containers
-      id: container-list
-      run: docker container list
-    # - name: Container Ip
-    #   run: |
-    #     export CONTAINER_IP=$(docker inspect -f '{{ .NetworkSettings.IPAddress }}' fastapi-app-container)
-    #     echo $CONTAINER_IP
-    - name: Print Logs
-      run: cat container_logs.txt
-
+    
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -68,19 +49,8 @@ jobs:
     
     - name: Tag Docker Image
       run: |
-        docker tag fastapi-image:1.0 endybits/fastapi-image:1.0
+        docker tag fastapi-image:1.0 ${{ env.DOCKER_REGISTRY_USERNAME }}/fastapi-image:1.0
       
     - name: Push Docker Image
       run: |
-        docker push endybits/fastapi-image:1.0
-      
-    # - name: Health Check
-    #   run: |
-    #     echo "Health check result"
-    #     curl -s https://localhost:8000/health || exit 1
-
-    # - name: Curl container
-    #   id: curl-container
-    #   uses: indiesdev/curl@v1.1
-    #   with:
-    #     url: https://$CONTAINER_IP:8000
+        docker push ${{ env.DOCKER_REGISTRY_USERNAME }}/fastapi-image:1.0
