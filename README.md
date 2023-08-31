@@ -24,3 +24,7 @@ Steps:
 
 
   **b) Remote and Professional Aproach:** this is the essence of the project. This aproach shows you how to use a Github Actions workflow to package the app in a Docker Image and update it on the Docker Registry when the repo is pushed (**I must explain it in a better way).
+  In this exampel, I created a GHA workflow in the [create-app-image.yml](https://github.com/endybits/devops-01-app-docker/blob/master/.github/workflows/create-app-image.yml) file.
+  The code contain this steps:
+![image](https://github.com/endybits/devops-01-app-docker/assets/22806426/99599549-7532-4f5d-b07b-0a5d95b3103a)
+
