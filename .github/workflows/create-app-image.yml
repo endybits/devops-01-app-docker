@@ -68,7 +68,7 @@ jobs:
     
     - name: Push Docker Image
       run: |
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-image:1.0
+        docker push endybits/fastapi-image:1.0
 
     # - name: Health Check
     #   run: |
