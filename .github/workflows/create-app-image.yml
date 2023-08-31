@@ -8,7 +8,7 @@ env:
   DOCKER_REGISTRY_USERNAME: "endybits"
 
 jobs:
-  hello-docker:
+  Packaging-App-in-Docker:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -47,9 +47,9 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     
-    - name: Tag Docker Image
-      run: |
-        docker tag fastapi-image:1.0 ${{ env.DOCKER_REGISTRY_USERNAME }}/fastapi-image:1.0
+    # - name: Tag Docker Image
+    #   run: |
+    #     docker tag fastapi-image:1.0 ${{ env.DOCKER_REGISTRY_USERNAME }}/fastapi-image:1.0
       
     - name: Push Docker Image
       run: |
